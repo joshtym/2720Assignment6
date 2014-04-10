@@ -1,6 +1,7 @@
 .PHONY  : all
 all:
 	$(MAKE) -C src
+	$(MAKE) -C simulationDir
 
 .PHONY : testcases
 testcases:
@@ -10,4 +11,6 @@ testcases:
 clean:
 	$(MAKE) -C src clean
 	$(MAKE) -C test clean
+	$(MAKE) -C simulationDir clean
+	rm simulationDir/interface
 	rm include/*~

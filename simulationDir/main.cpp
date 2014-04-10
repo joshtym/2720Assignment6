@@ -9,35 +9,30 @@
  * Software Used: Geany
 */
 
-#include "AlphaTownFactory.h"
-#include "BetaTownFactory.h"
-#include "GammaTownFactory.h"
-#include "PayStationImpl.h"
+#include "DisplayStrategy.h"
 #include <string>
 #include <iostream>
+
+/// Helper function to print the available options
+void printMenu();
+
+/// Helper function to print the primary information
+void printInformation(int, int);
 
 int main()
 {
 	// Variable declartion of the object
-	PayStation ps = new PayStationImpl(new AlphaTownFactory);
+	DisplayStrategy display;
+	Receipt r;
 	char ch;
 	int givenInt;
 	int currentCity = 0;
 	
-	std::cout << "Simulation started."<< std::endl << std::endl;
-	std::cout << "The following operations are available:" << std::endl;
-	std::cout << "- Hit 'c' to cancel the current payment" << std::endl;
-	std::cout << "- Hit '+' to add a value" << std::endl;
-	std::cout << "- Hit 'b' to buy the amount entered. This will print" << std::endl;
-	std::cout << "  out a receipt" << std::endl;
-	std::cout << "- Hit 'n' to iterate through cities" << std::endl;
-	std::cout << "- Hit 'm' to see this menu again" << std::endl;
-	std::cout << "- Hit 'q' to quit the simulation" << std::endl;
-	std::cout << std::endl;
+	std::cout << "Simulation started." << std::endl;
+	printMenu();
+	printInformation(currentCity, display.getCurrentPaymentTime());
 	
 	// Get next char
-	std::cout << "Current Value implemented at city is:" << std::endl;
-	std::cout << ps->readDisplay() << std::endl;
 	std::cin >> ch;
 	
 	while ( ch != 'Q' && ch != 'q')
@@ -47,8 +42,9 @@ int main()
 		// paystation and just reset to 0. 
 		if (ch == 'c' || ch == 'C')
 		{
-			ps->cancel();
+			display.cancel();
 			std::cout << "Current session reset" << std::endl;
+			std::cout << std::endl;
 		}
 		// If this key, then find out which value they would like to put
 		// into the display
@@ -58,53 +54,45 @@ int main()
 			std::cout << "5, 10, and 25 cents" <<std:: endl;
 			
 			std::cin >> givenInt;
-			ps->addPayment(givenInt);
+			std::cout << std::endl;
+			display.addPayment(givenInt);
 		}
 		
 		// If this key, iterate through the cities
 		else if (ch == 'n')
 		{
-			currentCity = (currentCity + 1) % 3;
-			if (currentCity == 0)
+			display.nextCity();
+			
+			if (display.getCurrentCity() == 0)
 			{
-				delete ps;
-				ps = new PayStationImpl(new AlphaTownFactory);
-				std::cout << "Now in AlphaTown PayStation" << std::endl;
+				std::cout << "Now in AlphaTown's parking meter.";
+				std::cout << std::endl << std::endl;
 			}
-			else if (currentCity == 1)
+			else if (display.getCurrentCity() == 1)
 			{
-				delete ps;
-				ps = new PayStationImpl(new BetaTownFactory);
-				std::cout << "Now in BetaTown PayStation" << std::endl;
+				std::cout << "Now in BetaTown's parking meter.";
+				std::cout << std::endl << std::endl;
 			}
-			else
+			else if (display.getCurrentCity() == 2)
 			{
-				delete ps;
-				ps = new PayStationImpl(new GammaTownFactory);
-				std::cout << "Now in GammaTown PayStation" << std::endl;
+				std::cout << "Now in GammaTown's parking meter.";
+				std::cout << std::endl << std::endl;
 			}
 		}
 		
 		else if(ch == 'b' || ch == 'B')
 		{
-			//Receipt receipt = ps->buy();
+			display.buy();
+			std::cout << std::endl << std::endl;
 		}
 		
 		else if (ch == 'm' || ch == 'M')
 		{
-			std::cout << "The following operations are available:" << std::endl;
-			std::cout << "- Hit 'c' to cancel the current payment" << std::endl;
-			std::cout << "- Hit '+' to add a value" << std::endl;
-			std::cout << "- Hit 'b' to buy the amount entered. This will print" << std::endl;
-			std::cout << "  out a receipt" << std::endl;
-			std::cout << "- Hit 'n' to iterate through cities" << std::endl;
-			std::cout << "- Hit 'm' to see this menu again" << std::endl;
-			std::cout << "- Hit 'q' to quit the simulation" << std::endl;
-			std::cout << std::endl;
+			printMenu();
 		}
 		
-		std::cout << "Current Value implemented at city is:" << std::endl;
-		std::cout << ps->readDisplay() << std::endl;		
+		printInformation(display.getCurrentCity(), display.getCurrentPaymentTime());
+				
 		std::cin >> ch;
 	}
 	
@@ -112,3 +100,31 @@ int main()
 	
 	return 0;
 }
+
+void printMenu()
+{
+	std::cout << "The following operations are available:" << std::endl;
+	std::cout << "- Hit 'c' to cancel the current payment" << std::endl;
+	std::cout << "- Hit '+' to add a value" << std::endl;
+	std::cout << "- Hit 'b' to buy the amount entered. This will print" << std::endl;
+	std::cout << "  out a receipt" << std::endl;
+	std::cout << "- Hit 'n' to iterate through cities" << std::endl;
+	std::cout << "- Hit 'm' to see this menu again" << std::endl;
+	std::cout << "- Hit 'q' to quit the simulation" << std::endl;
+	std::cout << std::endl;
+}
+
+void printInformation(int currentCity, int currentTime)
+{
+	std::cout << "Current amount of time implemented at city ";
+	
+	if (currentCity == 0)
+		std::cout << "AlphaTown";
+	else if (currentCity == 1)
+		std::cout << "BetaTown";
+	else
+		std::cout << "GammaTown";
+	
+	std::cout << " is:  " << currentTime << std::endl;
+	std::cout << std::endl;
+}  

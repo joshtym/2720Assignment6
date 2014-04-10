@@ -14,13 +14,13 @@ AlternatingRateStrategy.o: AlternatingRateStrategy.cpp \
 ClockBasedDecisionStrategy.o: ClockBasedDecisionStrategy.cpp \
  ../../include/ClockBasedDecisionStrategy.h \
  ../../include/WeekendDecisionStrategy.h
-DisplaySimulation.o: DisplaySimulation.cpp \
- ../../include/DisplaySimulation.h ../../include/PayStationImpl.h \
- ../../include/PayStation.h ../../include/IllegalCoinException.h \
- ../../include/Receipt.h ../../include/RateStrategy.h \
- ../../include/PayStationFactory.h ../../include/AlphaTownFactory.h \
- ../../include/LinearRateStrategy.h ../../include/StandardReceipt.h \
- ../../include/BetaTownFactory.h ../../include/ProgressiveRateStrategy.h \
- ../../include/GammaTownFactory.h ../../include/AlternatingRateStrategy.h \
+DisplayStrategy.o: DisplayStrategy.cpp ../../include/DisplayStrategy.h \
+ ../../include/PayStationImpl.h ../../include/PayStation.h \
+ ../../include/IllegalCoinException.h ../../include/Receipt.h \
+ ../../include/RateStrategy.h ../../include/PayStationFactory.h \
+ ../../include/AlphaTownFactory.h ../../include/LinearRateStrategy.h \
+ ../../include/StandardReceipt.h ../../include/BetaTownFactory.h \
+ ../../include/ProgressiveRateStrategy.h ../../include/GammaTownFactory.h \
+ ../../include/AlternatingRateStrategy.h \
  ../../include/WeekendDecisionStrategy.h \
  ../../include/ClockBasedDecisionStrategy.h

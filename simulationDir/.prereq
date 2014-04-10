@@ -1,9 +1,9 @@
-main.o: main.cpp ../include/AlphaTownFactory.h \
- ../include/PayStationFactory.h ../include/RateStrategy.h \
- ../include/Receipt.h ../include/LinearRateStrategy.h \
- ../include/StandardReceipt.h ../include/BetaTownFactory.h \
- ../include/ProgressiveRateStrategy.h ../include/GammaTownFactory.h \
- ../include/AlternatingRateStrategy.h \
+main.o: main.cpp ../include/DisplayStrategy.h ../include/PayStationImpl.h \
+ ../include/PayStation.h ../include/IllegalCoinException.h \
+ ../include/Receipt.h ../include/RateStrategy.h \
+ ../include/PayStationFactory.h ../include/AlphaTownFactory.h \
+ ../include/LinearRateStrategy.h ../include/StandardReceipt.h \
+ ../include/BetaTownFactory.h ../include/ProgressiveRateStrategy.h \
+ ../include/GammaTownFactory.h ../include/AlternatingRateStrategy.h \
  ../include/WeekendDecisionStrategy.h \
- ../include/ClockBasedDecisionStrategy.h ../include/PayStationImpl.h \
- ../include/PayStation.h ../include/IllegalCoinException.h
+ ../include/ClockBasedDecisionStrategy.h
