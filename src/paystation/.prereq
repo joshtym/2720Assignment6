@@ -1,0 +1,26 @@
+PayStationImpl.o: PayStationImpl.cpp ../../include/PayStationImpl.h \
+ ../../include/PayStation.h ../../include/IllegalCoinException.h \
+ ../../include/Receipt.h ../../include/RateStrategy.h \
+ ../../include/PayStationFactory.h
+StandardReceipt.o: StandardReceipt.cpp ../../include/StandardReceipt.h \
+ ../../include/Receipt.h
+LinearRateStrategy.o: LinearRateStrategy.cpp \
+ ../../include/LinearRateStrategy.h ../../include/RateStrategy.h
+ProgressiveRateStrategy.o: ProgressiveRateStrategy.cpp \
+ ../../include/ProgressiveRateStrategy.h ../../include/RateStrategy.h
+AlternatingRateStrategy.o: AlternatingRateStrategy.cpp \
+ ../../include/AlternatingRateStrategy.h ../../include/RateStrategy.h \
+ ../../include/WeekendDecisionStrategy.h
+ClockBasedDecisionStrategy.o: ClockBasedDecisionStrategy.cpp \
+ ../../include/ClockBasedDecisionStrategy.h \
+ ../../include/WeekendDecisionStrategy.h
+DisplaySimulation.o: DisplaySimulation.cpp \
+ ../../include/DisplaySimulation.h ../../include/PayStationImpl.h \
+ ../../include/PayStation.h ../../include/IllegalCoinException.h \
+ ../../include/Receipt.h ../../include/RateStrategy.h \
+ ../../include/PayStationFactory.h ../../include/AlphaTownFactory.h \
+ ../../include/LinearRateStrategy.h ../../include/StandardReceipt.h \
+ ../../include/BetaTownFactory.h ../../include/ProgressiveRateStrategy.h \
+ ../../include/GammaTownFactory.h ../../include/AlternatingRateStrategy.h \
+ ../../include/WeekendDecisionStrategy.h \
+ ../../include/ClockBasedDecisionStrategy.h

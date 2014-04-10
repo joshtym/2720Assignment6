@@ -1,0 +1,15 @@
+main.o: main.cpp TestReceipt.h ../include/StandardReceipt.h \
+ ../include/Receipt.h TestProgressiveRateStrategy.h \
+ ../include/ProgressiveRateStrategy.h ../include/RateStrategy.h \
+ TestIntegration.h ../include/PayStationImpl.h ../include/PayStation.h \
+ ../include/IllegalCoinException.h ../include/PayStationFactory.h \
+ ../include/AlphaTownFactory.h ../include/LinearRateStrategy.h \
+ ../include/StandardReceipt.h ../include/BetaTownFactory.h \
+ ../include/ProgressiveRateStrategy.h ../include/GammaTownFactory.h \
+ ../include/AlternatingRateStrategy.h \
+ ../include/WeekendDecisionStrategy.h \
+ ../include/ClockBasedDecisionStrategy.h TestPayStationUnit.h \
+ TestTownFactory.h ../include/PayStationFactory.h One2OneRateStrategy.h \
+ ../include/RateStrategy.h TestAlternatingRateStrategy.h \
+ ../include/AlternatingRateStrategy.h FixedDecisionStrategy.h \
+ ../include/WeekendDecisionStrategy.h ../include/LinearRateStrategy.h
